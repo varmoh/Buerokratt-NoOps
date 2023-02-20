@@ -71,6 +71,14 @@ services:
     restart: always
     networks:
       - bykstack
+  byk-resql:
+    container_name: resql
+    ports:
+      - 8082:8082
+    volumes:
+      - ./DSL.Resql:/workspace/app/templates/
+    networks:
+      - bykstack
 
 
 
