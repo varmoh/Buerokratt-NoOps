@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Helm Values Editor</title>
+</head>
+<body>
+  <h1>Edit Helm Values</h1>
+  <form action="/update" method="post">
+    <h2>Ruuter</h2>
+    <label for="ruuter_tag">Image Tag:</label>
+    <input type="text" id="ruuter_tag" name="ruuter_tag" value="{{ ruuter['images']['scope']['tag'] }}">
+    <h2>Resql</h2>
+    <label for="resql_tag">Image Tag:</label>
+    <input type="text" id="resql_tag" name="resql_tag" value="{{ resql['images']['scope']['tag'] }}">
+    <br><br>
+    <button type="submit">Update Values</button>
+  </form>
+</body>
+</html>

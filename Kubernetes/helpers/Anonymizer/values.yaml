@@ -1,0 +1,31 @@
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+domain: test.buerokratt.ee # Domain name
+secretname: admin.test.buerokratt.ee1904prod # Cert name value, change this as suited to environment
+
+ingress:
+  certIssuerName: letsencrypt-prod # Change this if your certIssuerName has set up different
+
+release_name: "module-byk-anonymizer-layer"
+
+images:
+  gui:
+    registry: "ghcr.io"
+    repository: "buerokratt/data-anonymizer"
+    tag: "pre-alpha-1.1.1-labelstudio" # Images (tags) are up to date, currently no changes needed
+

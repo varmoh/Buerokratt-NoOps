@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.release_name }}"
+spec:
+  selector:
+    matchLabels:
+      app: "{{ .Values.release_name }}"
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.release_name }}"
+    spec:
+      containers:
+        - name: "{{ .Values.release_name }}"
+          image: "{{ .Values.images.gui.registry }}/{{ .Values.images.gui.repository }}:{{ .Values.images.gui.tag }}"
+          ports:
+            - containerPort: 8002
+              name: http
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8002
+          #   initialDelaySeconds: 30
+          #   periodSeconds: 10
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8002
+          #   initialDelaySeconds: 40
+          #   periodSeconds: 10

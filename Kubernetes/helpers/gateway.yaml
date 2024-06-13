@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: ruuter-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 8443
+        name: http
+        protocol: HTTPS
+      hosts:
+        - "ruuter.test.buerokratt.ee"

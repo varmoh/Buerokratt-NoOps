@@ -1,0 +1,44 @@
+{{- if .Values.fluentBit.enabled -}}
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ .Values.global.releaseName }}-fluent-bit
+  labels:
+    k8s-app: {{ .Values.global.releaseName }}-fluent-bit-logging
+spec:
+  selector:
+    matchLabels:
+      k8s-app: {{ .Values.global.releaseName }}-fluent-bit-logging
+  template:
+    metadata:
+      labels:
+        k8s-app: {{ .Values.global.releaseName }}-fluent-bit-logging
+    spec:
+      containers:
+        - name: fluent-bit
+          image: fluent/fluent-bit:{{ .Values.fluentBit.imageTag }}
+          resources:
+            limits:
+              memory: 200Mi
+          volumeMounts:
+            - name: config-volume
+              mountPath: /fluent-bit/etc/fluent-bit.conf
+              subPath: fluent-bit.conf
+            - name: varlog
+              mountPath: /var/log
+            - name: varlibdockercontainers
+              mountPath: /var/lib/docker/containers
+          env:
+            - name: FLUENT_UID
+              value: "0"
+      volumes:
+        - name: config-volume
+          configMap:
+            name: fluent-bit-config
+        - name: varlog
+          hostPath:
+            path: /var/log
+        - name: varlibdockercontainers
+          hostPath:
+            path: /var/lib/docker/containers
+{{- end -}}

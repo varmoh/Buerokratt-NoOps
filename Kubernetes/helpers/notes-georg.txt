@@ -1,0 +1,6 @@
+- Commandid mida kasutan võis olla otse copy-paste
+- muuda esimene cd õigeks
+- lisa ekstra samm/õpetus yamli muutmise ja skripti käivitue vahele
+- lisa osa kus ütled, et yhenda en kubega, export KUBECONFIG=token.yaml
+- lisa check käsk helm ls --short -n byrokratt mida teha peale kube kustutami skripti
+- images are up to date lisa daatum, et oleks näha millal olen uuenanud imaged

@@ -1,0 +1,13 @@
+{{- if .Values.opensearchDashboards.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.global.releaseName }}-opensearch-dashboards
+spec:
+  selector:
+    app: {{ .Values.global.releaseName }}-opensearch-dashboards
+  ports:
+    - protocol: TCP
+      port: 5601
+      targetPort: 5601
+{{- end -}}

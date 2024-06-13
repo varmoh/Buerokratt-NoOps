@@ -1,0 +1,4 @@
+apiVersion: v2
+name: ca-cert-generator
+description: A Helm chart to generate a CA certificate and key pair and create a Kubernetes secret
+version: 0.1.0

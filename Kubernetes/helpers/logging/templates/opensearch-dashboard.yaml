@@ -1,0 +1,22 @@
+{{- if .Values.opensearchDashboards.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.global.releaseName }}-opensearch-dashboards
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.global.releaseName }}-opensearch-dashboards
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.global.releaseName }}-opensearch-dashboards
+    spec:
+      containers:
+        - name: opensearch-dashboards
+          image: opensearchproject/opensearch-dashboards:{{ .Values.opensearchDashboards.imageTag }}
+          ports:
+            - containerPort: 5601
+              name: http
+{{- end -}}

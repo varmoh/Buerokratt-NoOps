@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Config
+clusters:
+- name: "rit-byrokratt"
+  cluster:
+    server: "https://rp-rancher.opnd.eu/k8s/clusters/c-jw2g5"
+- name: "rit-byrokratt-rke-ctrl01"
+  cluster:
+    server: "https://192.168.42.119:6443"
+    certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM0VENDQ\
+      WNtZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFTTVJBd0RnWURWUVFERXdkcmRXSmwKT\
+      FdOaE1CNFhEVEkwTURReE9UQTRNekl3TTFvWERUTTBNRFF4TnpBNE16SXdNMW93RWpFUU1BNEdBM\
+      VVFQXhNSAphM1ZpWlMxallUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ\
+      0VCQUtwZ1VEU3p2S2xzCjVLKzRDU0JVM3pjVTJ1dzVkRTJma2V2b2ZGY3l2eDQ2RnZFblhQODg2e\
+      UJPWDlMajZudzIyNHhzS08yUjhZVjcKSDJ6VnpaUyt0Z2tNUVJyY1g4QUVmSnZmMUtpbUg4eXlvS\
+      2ZwK0JQSDZ3cDVGaUZzYzJRMi9qdGZianpIN0lMbQpEU3RGOHNZenZteHdTQ214dzFaSnBYME5lU\
+      2hjYjNqMWNVQm1BK3RJVUVCMjhubUtTTGlBczJtUkduOHNKSDFrCjFGQllDK2tpRTVZeGR1Z00yS\
+      EJpVFU4YXpWbUloczh0ZWxxV09DWkFUSmdZR0F0RnAvcDBrbDBhNUYzbFMvVjIKOWZjSU41cldQS\
+      VFYUkFOMk95NVhxbDFxdlRIVlk0R2J0UDNINmlERUg3djlUMGJzYlhqNzVEMFhXRjFOMS93RApsU\
+      ThVSjlaUmhpTUNBd0VBQWFOQ01FQXdEZ1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93U\
+      UZNQU1CCkFmOHdIUVlEVlIwT0JCWUVGQWZBdzBBbFY2ZUlkKzZxdVhicE1ISGQrVVB1TUEwR0NTc\
+      UdTSWIzRFFFQkN3VUEKQTRJQkFRQ2Nwbko5YVZaaFQvNnA0VEVvRVZjSW1rTHVxNVJWTGFENU9xV\
+      1BmUzQrZU5Ub2NyT1IvZEtzRTVvZgpLRUJHQlRLbUxEUytaVkcwejFxcVBENjkvSU5jeGE4Z3NKM\
+      E9Wb01SYm1aUTRzTnpWM3VreUkvSFpyQWZTc3RwCk9zNjFmYjVqRzdCUVh1N1pkNGVVY0k0YmN0U\
+      EF3OXg3K0dQZXNmMk40SVU0amxiTXppNURmZ3ZVcndaUDZLN3YKQWcvbno4c0lTeU9Ody9EZ2IrS\
+      1dZM3ZqWGwxOEtNNFdvZHNMSjZCZ2ozZlliL2Jsa2poMU1hMDJCdnlVSE1PeQpLelFDOXpSdjMyZ\
+      GdZZy92R2V1YXVKMmx0cjdrZ3BzRzVHTmVuMS95L0p5eGs2b2QwZ2FCNjdjMllOR1lRaVVECmRCO\
+      FlzQ1IvSFl3bWdCam51bkxzN0dOdkpJRDYKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="
+
+users:
+- name: "rit-byrokratt"
+  user:
+    token: "kubeconfig-u-c7hg4sn8nf:8vvvmztz249k6mhrnn9ht5df7d7x2dx95c9dmbprmbd4phz5g29l46"
+
+
+contexts:
+- name: "rit-byrokratt"
+  context:
+    user: "rit-byrokratt"
+    cluster: "rit-byrokratt"
+- name: "rit-byrokratt-rke-ctrl01"
+  context:
+    user: "rit-byrokratt"
+    cluster: "rit-byrokratt-rke-ctrl01"
+
+current-context: "rit-byrokratt"

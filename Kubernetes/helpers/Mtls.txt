@@ -1,0 +1,33 @@
+Nagu avaliselt, lo directory, Chart.yaml, values.yaml, templates/
+values.yaml
+certificate:
+  name: internal-tls-cert
+  secretName: internal-tls-secret
+  dnsNames:
+    - dns # nimi siia, ntx test.buerokratt.ee. Uurima, et kui subdomainid on, siis kuidas täpsemalt
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+
+
+templates/certification.yaml
+# Võtab väärtused values alt.
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ .Values.certificate.name }}
+spec:
+  secretName: {{ .Values.certificate.secretName }}
+  dnsNames:
+    {{- range .Values.certificate.dnsNames }}
+    - {{ . }}
+    {{- end }}
+  issuerRef:
+    name: {{ .Values.certificate.issuerRef.name }}
+    kind: {{ .Values.certificate.issuerRef.kind }}
+
+helm install peale seda
+helm install cert-releasename ./where_chart_is
+
+
+Example deploymentist kuhu Mtls lisatud, internal suhtluseks

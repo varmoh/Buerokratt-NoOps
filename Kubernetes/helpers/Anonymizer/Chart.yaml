@@ -1,0 +1,7 @@
+apiVersion: v2
+name: Anonymizer
+description: A Helm chart for Anonymizer
+type: application
+
+version: 0.1.0
+appVersion: 2.0.0

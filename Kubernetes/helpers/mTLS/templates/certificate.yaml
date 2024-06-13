@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ include "mTLS.fullname" . }}
+  namespace: {{ .Values.namespace }}
+spec:
+  secretName: {{ .Values.secretName }}
+  dnsNames:
+{{- range .Values.dnsNames }}
+    - {{ . }}
+{{- end }}
+  issuerRef:
+    name: {{ .Values.issuerRefName }}
+    kind: {{ .Values.issuerRefKind }}
+    group: cert-manager.io

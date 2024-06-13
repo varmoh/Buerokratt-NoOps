@@ -1,0 +1,41 @@
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+domain: test.buerokratt.ee # Domain name
+
+opensearchDashboards:
+  enabled: true
+
+ingress:
+  certIssuerName: letsencrypt-prod
+
+secretname: admin.test.buerokratt.ee1904prod # Cert name value, change this as suited to environment
+
+global:
+  releaseName: "logging"
+
+opensearch:
+  imageTag: "2.19.0"  # OpenSearch version
+  replicas: 1
+
+opensearchDashboards:
+  enabled: true
+  imageTag: "2.17.0"  # OpenSearch Dashboards version
+
+fluentBit:
+  enabled: true
+  imageTag: "0.46.2"  # Fluent Bit version

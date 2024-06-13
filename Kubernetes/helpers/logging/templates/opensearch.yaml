@@ -1,0 +1,28 @@
+{{- if .Values.opensearch.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.global.releaseName }}-opensearch
+spec:
+  replicas: {{ .Values.opensearch.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.global.releaseName }}-opensearch
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.global.releaseName }}-opensearch
+    spec:
+      containers:
+        - name: logging-opensearch
+          image: opensearchproject/opensearch:{{ .Values.opensearch.imageTag }}
+          env:
+            - name: OPENSEARCH_INITIAL_PASSWORD
+              value: "01234"
+          ports:
+            - containerPort: 9200
+              name: http
+            - containerPort: 9300
+              name: transport
+            
+{{- end -}}

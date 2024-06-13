@@ -1,0 +1,8 @@
+# templates/psp.yaml
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: traffic
+spec:
+  privileged: false
+  

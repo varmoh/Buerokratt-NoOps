@@ -1,0 +1,20 @@
+apiVersion: v2
+name: databases2
+description: A Helm chart for databases, using the release name "databases"
+
+type: application
+version: 0.1.20
+
+dependencies:
+  - name: postgresql
+    version: 12.2.2
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - tim-postgresql2
+    alias: tim-postgresql2
+  - name: postgresql
+    version: 12.2.2
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - users-db2
+    alias: users-db2

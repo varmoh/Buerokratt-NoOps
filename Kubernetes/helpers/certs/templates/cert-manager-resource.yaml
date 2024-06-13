@@ -1,0 +1,50 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  ca:
+    secretName: ca-key-pair
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: server-mtls-certificate
+spec:
+  secretName: server-mtls-secret
+  duration: 2160h # 90 days
+  renewBefore: 360h # 15 days
+  commonName: component-byk-ruuter.default.svc.cluster.local
+  dnsNames:
+  - component-byk-ruuter.default.svc.cluster.local
+  - component-byk-ruuter
+  - component-byk-ruuter.test.buerokratt.ee
+  - component-byk-ruuter.default.svc
+  - component-byk-ruuter.default.svc.cluster
+  issuerRef:
+    name: letsencrypt-prod
+    kind: Issuer
+    group: cert-manager.io
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: client-mtls-certificate
+spec:
+  secretName: client-mtls-secret
+  duration: 2160h # 90 days
+  renewBefore: 360h # 15 days
+  commonName: component-byk-ruuter.default.svc.cluster.local
+  dnsNames:
+  - component-byk-ruuter.default.svc.cluster.local
+  - component-byk-ruuter
+  - component-byk-ruuter.test.buerokratt.ee
+  - component-byk-ruuter.default.svc
+  - component-byk-ruuter.default.svc.cluster
+  issuerRef:
+    name: letsencrypt-prod  # Change this to match your issuer name
+    kind: Issuer
+    group: cert-manager.io
+

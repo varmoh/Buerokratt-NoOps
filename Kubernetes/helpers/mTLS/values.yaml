@@ -1,0 +1,27 @@
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+domain: test.buerokratt.ee # Domain name
+namespace: byrokratt # Change this to match your namespace
+secretName: byrokratt-tls-secret # Change it to match your secretName
+dnsNames:
+  - test.buerokratt.ee
+  - admin.test.buerokratt.ee
+  - tim.test.buerokratt.ee
+  - ruuter.test.buerokratt.ee
+issuerRefName: letsencrypt-prod
+issuerRefKind: ClusterIssuer

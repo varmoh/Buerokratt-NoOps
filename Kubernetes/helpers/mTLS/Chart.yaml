@@ -1,0 +1,5 @@
+# Chart.yaml
+apiVersion: v2
+name: mTLS
+description: A Helm chart to deploy Certificate resource using cert-manager
+version: 0.1.0

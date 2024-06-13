@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: centops-cron
+spec:
+  schedule: "*/5 * * * *"  # Cron schedule for every 5 minutes
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: default
+          containers:
+          - name: centops-cron
+            image: riaee/byk:centops-1.0.21    # Specify image here
+            env:
+            - name: REPO_URL
+              value: "{{ .Values.cronenv.REPO_URL }}"
+            - name: BRANCH
+              value: "{{ .Values.cronenv.BRANCH }}"
+            - name: CHARTS_DIR
+              value: "{{ .Values.cronenv.CHARTS_DIR }}"
+            - name: NAMESPACE      
+              value: "{{ .Values.cronenv.NAMESPACE }}"
+#            - name: DEPLOYMENT
+#              value: "byk-test2"  "{{ .Values.release_name }}" # Specify deployment name here
+              
+          restartPolicy: OnFailure

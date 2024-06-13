@@ -1,0 +1,5 @@
+# templates/pre-install.yaml
+{{- if .Values.runPreInstallHook }}
+runScript: |
+  cfssl gencert -initca ca-csr.json | cfssljson -bare ca
+{{- end }}
